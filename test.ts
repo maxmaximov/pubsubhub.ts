@@ -1,17 +1,17 @@
 ///<reference path="PubSubHub.ts"/>
 
-module Test {
+module test {
     "use strict";
 
-    var hub = new PubSubHub.Hub();
+    var Hub = com.maxmaximov.PubSubHub;
 
     function handler (data: any) {
         console.log(data);
     }
 
-    hub.pub("ololo", 123);
-    hub.sub("ololo", handler);
-    hub.pub("ololo", 456);
-    hub.unsub("ololo", handler);
-    hub.pub("ololo", 789);
+    Hub.pub("ololo", 123);
+    Hub.sub("ololo", handler);
+    Hub.pub("ololo", 456);
+    Hub.unsub("ololo", handler);
+    Hub.pub("ololo", 789);
 }

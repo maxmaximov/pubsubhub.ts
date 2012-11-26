@@ -1,15 +1,20 @@
-var Test;
-(function (Test) {
+var test;
+(function (test) {
     "use strict";
-    var hub = new PubSubHub.Hub();
+    var Hub = com.maxmaximov.Hub;
     function handler(data) {
         console.log(data);
     }
-    hub.pub("ololo", 123);
-    hub.sub("ololo", handler);
-    hub.pub("ololo", 456);
-    hub.unsub("ololo", handler);
-    hub.pub("ololo", 789);
-})(Test || (Test = {}));
+    console.log(com.maxmaximov.Hub.subscriptions);
+    Hub.pub("ololo", 123);
+    console.log(com.maxmaximov.Hub.subscriptions);
+    Hub.sub("ololo", handler);
+    console.log(com.maxmaximov.Hub.subscriptions);
+    Hub.pub("ololo", 456);
+    console.log(com.maxmaximov.Hub.subscriptions);
+    Hub.unsub("ololo", handler);
+    console.log(com.maxmaximov.Hub.subscriptions);
+    Hub.pub("ololo", 789);
+    console.log(com.maxmaximov.Hub.subscriptions);
+})(test || (test = {}));
 
-//@ sourceMappingURL=test.js.map

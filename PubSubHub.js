@@ -1,35 +1,40 @@
-var PubSubHub;
-(function (PubSubHub) {
-    "use strict";
-    var Hub = (function () {
-        function Hub() {
-            this.subscriptions = {
+var com;
+(function (com) {
+    (function (maxmaximov) {
+        "use strict";
+        var Hub = (function () {
+            function Hub() { }
+            Hub.subscriptions = {
             };
-        }
-        Hub.prototype.pub = function (name, data) {
-            var handlers;
-            if(this.subscriptions[name]) {
-                handlers = this.subscriptions[name];
-                handlers.forEach(function (handler) {
-                    handler(data);
-                });
+            Hub.pub = function pub(name, data) {
+                var handlers;
+                if(this.subscriptions[name]) {
+                    handlers = this.subscriptions[name];
+                    handlers.forEach(function (handler) {
+                        handler(data);
+                    });
+                }
             }
-        };
-        Hub.prototype.sub = function (name, handler) {
-            if(!this.subscriptions[name]) {
-                this.subscriptions[name] = [];
+            Hub.sub = function sub(name, handler) {
+                if(!this.subscriptions[name]) {
+                    this.subscriptions[name] = [];
+                }
+                this.subscriptions[name].push(handler);
             }
-            this.subscriptions[name].push(handler);
-        };
-        Hub.prototype.unsub = function (name, handler) {
-            var index = this.subscriptions[name].indexOf(handler);
-            if(~index) {
-                this.subscriptions[name].splice(index, 1);
+            Hub.unsub = function unsub(name, handler) {
+                var index = this.subscriptions[name].indexOf(handler);
+                if(~index) {
+                    this.subscriptions[name].splice(index, 1);
+                }
+                if(this.subscriptions[name].length === 0) {
+                    delete this.subscriptions[name];
+                }
             }
-        };
-        return Hub;
-    })();
-    PubSubHub.Hub = Hub;    
-})(PubSubHub || (PubSubHub = {}));
+            return Hub;
+        })();
+        maxmaximov.Hub = Hub;        
+    })(com.maxmaximov || (com.maxmaximov = {}));
+    var maxmaximov = com.maxmaximov;
 
-//@ sourceMappingURL=PubSubHub.js.map
+})(com || (com = {}));
+
