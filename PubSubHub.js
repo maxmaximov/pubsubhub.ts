@@ -2,11 +2,11 @@ var com;
 (function (com) {
     (function (maxmaximov) {
         "use strict";
-        var Hub = (function () {
-            function Hub() { }
-            Hub.subscriptions = {
+        var PubSubHub = (function () {
+            function PubSubHub() { }
+            PubSubHub.subscriptions = {
             };
-            Hub.pub = function pub(name, data) {
+            PubSubHub.pub = function pub(name, data) {
                 var handlers;
                 if(this.subscriptions[name]) {
                     handlers = this.subscriptions[name];
@@ -15,13 +15,13 @@ var com;
                     });
                 }
             }
-            Hub.sub = function sub(name, handler) {
+            PubSubHub.sub = function sub(name, handler) {
                 if(!this.subscriptions[name]) {
                     this.subscriptions[name] = [];
                 }
                 this.subscriptions[name].push(handler);
             }
-            Hub.unsub = function unsub(name, handler) {
+            PubSubHub.unsub = function unsub(name, handler) {
                 var index = this.subscriptions[name].indexOf(handler);
                 if(~index) {
                     this.subscriptions[name].splice(index, 1);
@@ -30,9 +30,9 @@ var com;
                     delete this.subscriptions[name];
                 }
             }
-            return Hub;
+            return PubSubHub;
         })();
-        maxmaximov.Hub = Hub;        
+        maxmaximov.PubSubHub = PubSubHub;        
     })(com.maxmaximov || (com.maxmaximov = {}));
     var maxmaximov = com.maxmaximov;
 
