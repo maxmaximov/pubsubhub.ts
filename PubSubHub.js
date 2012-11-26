@@ -1,5 +1,6 @@
 var PubSubHub;
 (function (PubSubHub) {
+    "use strict";
     var Hub = (function () {
         function Hub() {
             this.subscriptions = {
@@ -31,3 +32,4 @@ var PubSubHub;
     PubSubHub.Hub = Hub;    
 })(PubSubHub || (PubSubHub = {}));
 
+//@ sourceMappingURL=PubSubHub.js.map

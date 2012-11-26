@@ -1,4 +1,6 @@
 module PubSubHub {
+    "use strict";
+
     interface IFunctionArrayHash {
         [name: string]: Function[];
     }

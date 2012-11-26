@@ -1,5 +1,6 @@
 var Test;
 (function (Test) {
+    "use strict";
     var hub = new PubSubHub.Hub();
     function handler(data) {
         console.log(data);
@@ -11,3 +12,4 @@ var Test;
     hub.pub("ololo", 789);
 })(Test || (Test = {}));
 
+//@ sourceMappingURL=test.js.map

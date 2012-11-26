@@ -1,6 +1,8 @@
 ///<reference path="PubSubHub.ts"/>
 
 module Test {
+    "use strict";
+
     var hub = new PubSubHub.Hub();
 
     function handler (data: any) {
